@@ -5,6 +5,7 @@ from openpyxl.styles import Border, Side
 import numpy as np
 import os
 
+
 caminho = os.getcwd() 
 arquivo_xls = caminho + r'\CACAU SHOW 201699-201700 TESTE.xls'
 arquivo_xlsx = caminho + r'\CACAU_SHOW_201699-201700_TESTE_CONVERTIDO.xlsx'
@@ -106,3 +107,4 @@ for row in ws.iter_rows():
 wb.save(arquivo_xlsx)
 
 print("Quebras de página adicionadas, células limpas, larguras das colunas ajustadas, e bordas horizontais adicionadas às linhas!")
+print('Terminou :)')
