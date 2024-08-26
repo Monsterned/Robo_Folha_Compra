@@ -4,7 +4,7 @@ from openpyxl.worksheet.pagebreak import Break
 from openpyxl.styles import Border, Side
 import numpy as np
 import os
-
+from openpyxl.styles import Alignment
 
 caminho = os.getcwd() 
 arquivo_xls = caminho + r'\CACAU SHOW 201699-201700 TESTE.xls'
@@ -84,6 +84,7 @@ for cell in ws[descricao_letter]:
 # Definir a largura da coluna 'Descrição'
 ws.column_dimensions[descricao_letter].width = descricao_max_length + 2  # +2 para algum espaçamento extra
 
+
 # Adicionar bordas horizontais às linhas
 border_top = Side(style='thin')
 border_bottom = Side(style='thin')
@@ -101,6 +102,13 @@ ws.page_setup.orientation = 'landscape'
 row_height = 22  # Defina a altura desejada para as linhas
 for row in ws.iter_rows():
     ws.row_dimensions[row[0].row].height = row_height
+
+# Centralizar o conteúdo da coluna 'ALOCAÇÃO'
+col_alocacao_index = Planilha_xml.columns.get_loc('ALOCAÇÃO') + 1  # +1 porque openpyxl é 1-based index
+col_alocacao_letter = openpyxl.utils.get_column_letter(col_alocacao_index)
+
+for cell in ws[col_alocacao_letter]:
+    cell.alignment = Alignment(horizontal='center')
 
 
 # Salvar o arquivo Excel com as quebras de página e células limpas
