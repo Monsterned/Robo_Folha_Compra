@@ -78,6 +78,8 @@ for cell in ws[descricao_letter]:
     except:
         pass
 
+
+
 # Definir a largura da coluna 'Descrição'
 ws.column_dimensions[descricao_letter].width = descricao_max_length + 2  # +2 para algum espaçamento extra
 
